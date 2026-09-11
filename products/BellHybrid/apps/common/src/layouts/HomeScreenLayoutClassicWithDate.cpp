@@ -59,8 +59,11 @@ namespace gui
         HomeScreenLayoutClassic::setTime(newTime);
         const auto t = std::localtime(&newTime);
 
-        date->setText((stm::api::dateFormat() == utils::time::Locale::DateFormat::DD_MM_YYYY) ? GetDateInDDMMFormat(t)
-                                                                                              : GetDateInMMDDFormat(t));
+        const auto dayName  = utils::time::Locale::get_short_day(static_cast<uint32_t>(t->tm_wday));
+        const auto dateStr  = (stm::api::dateFormat() == utils::time::Locale::DateFormat::DD_MM_YYYY)
+                                  ? GetDateInDDMMFormat(t)
+                                  : GetDateInMMDDFormat(t);
+        date->setText(std::string(dayName) + " " + dateStr);
 
         if (ampm->visible) {
             const auto hours = std::chrono::hours{t->tm_hour};

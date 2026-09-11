@@ -5,8 +5,10 @@
 ### Fixed
 
 ### Added
+* Added day of week abbreviation to date display on the home screen (Classic with Date and Vertical with Date layouts)
 
 ### Changed / Improved
+
 
 ## [2.10.0 2025-09-24]
 
